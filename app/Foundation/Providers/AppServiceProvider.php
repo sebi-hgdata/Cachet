@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Dispatcher $dispatcher)
     {
+    $this->app['request']->server->set('HTTPS', true);
         $dispatcher->mapUsing(function ($command) {
             return Dispatcher::simpleMapping($command, 'CachetHQ\Cachet\Bus', 'CachetHQ\Cachet\Bus\Handlers');
         });
